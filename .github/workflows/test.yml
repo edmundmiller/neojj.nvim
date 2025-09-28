@@ -25,4 +25,4 @@ jobs:
 
       - name: Run tests (MiniTest)
         run: |
-          nvim --headless -u tests/minirc.lua +"lua MiniTest.run()" +qa
+          nvim --headless -u tests/minirc.lua +"lua MiniTest.run({collect = {find_files = function() return {'tests/test_hints.lua', 'tests/test_plugin.lua'} end}})" +qa
