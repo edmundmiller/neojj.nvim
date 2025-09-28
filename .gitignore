@@ -1,0 +1,7 @@
+# Test dependencies (vendored in CI)
+tests/vendor/
+
+# Temporary files
+*.tmp
+nvim.tar.gz
+nvim-linux64/
