@@ -43,4 +43,10 @@ Run locally (requires Neovim and mini.nvim available on runtimepath):
 nvim --headless -u tests/minirc.lua +"lua MiniTest.run()" +qa
 ```
 
+Or use the test script which handles vendoring mini.nvim automatically:
+
+```sh
+./scripts/test.sh
+```
+
 In CI we vendor `mini.nvim` into `tests/vendor/mini.nvim` automatically.
