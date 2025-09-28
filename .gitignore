@@ -1,0 +1,9 @@
+# Lua / Neovim plugin basics
+*.lua~
+*.swp
+*.swo
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
