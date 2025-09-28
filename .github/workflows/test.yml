@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [ "feat/tests-mini", "feat/initial-scaffold" ]
+  pull_request:
+    branches: [ "feat/initial-scaffold", "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Neovim
+        run: |
+          curl -L -o nvim.tar.gz https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+          tar xzf nvim.tar.gz
+          echo "${{ github.workspace }}/nvim-linux64/bin" >> $GITHUB_PATH
+
+      - name: Vendor mini.nvim for tests
+        run: |
+          git clone --depth=1 https://github.com/echasnovski/mini.nvim tests/vendor/mini.nvim
+
+      - name: Run tests (MiniTest)
+        run: |
+          nvim --headless -u tests/minirc.lua +"lua MiniTest.run()" +qa
